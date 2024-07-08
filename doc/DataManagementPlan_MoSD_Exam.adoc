@@ -1,0 +1,159 @@
+= MoSD Exam Data Management Plan
+Johannes Franke <johannes.franke@uni-jena.de>
+:description: The repository for the "Management of Scientific Data" exam containing informations about the creation process of the slides as well as the data and tools used.
+:sectanchors: 
+:toc:
+:url-repo: https://github.com/JohannesF99/MoSD-Exam
+
+== general process
+
+. get an overview of all available material
+. analyse the task for the exam
+. create repository to store all metadata for the exam itself and to additionally add history to the project
+
+. select one of the given scenarios
+.. I chose the covid scenario because it is still very relevant to all of us and it pairs well with the topic of our ReproHack Review
+
+. come up with a reasonable research question
+.. i looked at the two datasets and took one of the more straightforware questions
+.. "is there connection between cases/deaths and testing volume?"
+
+. look detailed at the datasets on the website https://www.ecdc.europa.eu/en/publications-data/data-national-14-day-notification-rate-covid-19[cases/deaths dataset], https://www.ecdc.europa.eu/en/publications-data/covid-19-testing[testing volume dataset] (time frame from start 2020 till end 2023)
+.. pro & cons cases/deaths dataset (ca. 12600 entries)
+... available in many different formats
+... pretty self explainatory csv file structure
+... not that much metadata on the website itself
+... link to github repo
+.. pro & cons testing volume dataset (ca. 6100 entries)
+... same as for the first dataset
+... but much more metadata on the website
+.. when downloading from the website, both files get saved as _data.csv_ so renaming is necessary
+
+. select and fill out one DMP template
+.. i chose the https://view.officeapps.live.com/op/view.aspx?src=https:%2F%2Fwww.tuwien.at%2Ffileadmin%2FAssets%2Fforschung%2FZentrum_Forschungsdatenmanagement%2Fdata-management-plan-template_HE_2021.docx&wdOrigin=BROWSELINK[Horizon Europe] template found https://www.zedif.uni-jena.de/en/180/data-management-plan[here]
+.. reason: i felt that DMP are very elusive when not working with a konkrete example, so i chose one DMP that resembled those in the exercise and was not to large in size for the project
+
+. add https://1drv.ms/p/c/f2ce6a35a4bcb8f8/Ef3r8rRFoS5Dqf2jEH2hNDEBzDQD1lS_tptfSfQJuwqiKA?e=rtUu87[slides] for the exam
+.. development of slides in microsoft office (not ideal)
+.. after finishing the slides they will also be added to the repository as _pptx_ and _pdf_
+
+. go through the whole data lifecycle and add informations to all slides based on the informations learned in the lecture and in the corresponding moodle tiles
+
+== data lifecycle
+
+=== Plan
+
+- mostly covered by the data management plan
+
+=== Collect
+
+. Tools/Source für Daten
+.. reported by EU/EEA Member States to the European Surveillance System (TESSy)
+.. when not available, ECDC compiles data from public online sources
+. Automatisches Sammeln von Daten?
+.. no need, data provided by ECDC (European Centre for Disease Prevention and Control) 
+.. they automatically or manually retrieved (web-scraped) on a daily basis
+. Define a purpose of data collection
+.. collect data to form a comprehensive answer to the research question
+. Define amount of data
+.. too much data from too many different sources not good either, data quality may get worse
+.. the two datasets have probably enough data for the analysis
+. Data representativeness
+.. data is biased towards europe, no other countries included (could be interesting to compare)
+.. quality or noise of the data can't be evaluated
+. Cost of collection process
+.. collection cost by ECDC is not transparent
+.. collection process for this scenario was done by me alone, so no additional costs
+. Cost of storage
+.. data is placed in free github repository so no storage costs
+. Define data collection strategy
+.. no strategy required, maybe a little bit of preprocessing, e.g. select time frames, countries etc.
+. Data is
+.. Quantitative data
+.. structured data
+.. generally trustworthy because of the ECDC
+
+
+=== Assure
+
+. Completeness
+.. see _src/data_quality.ipynb_
+.. only 7.63% of all rows in the deats/cases dataset have values of NA in important rows
+.. but 18.86% of all rows in the testing dataset have NA values
+. Uniqueness
+.. is garantueed because of how the data is structured (one entry for every week for every country)
+. Timeliness
+.. is fairly representative
+.. ofc in a pandemic there is no guarantee that everything is 100% accurate
+. Validity
+.. all columns are valid and concise
+.. if a value is not present, it's value is NA
+. Accuracy
+.. the data entries are for each week, so there is no date format problem
+.. in general: all columns have values that make sense and can be expected
+. Consistency
+.. good consistency
+.. a minor flaw is that there are entries for countries but also for the EU as a whole. this could lead to some minor missunderstandings
+
+In general there are a few multi source problems on the instance level (inconsistent data) but apart from that, there are no major flaws. maybe a single source problem at the schema level with the EU/Country mixup
+
+=== Describe
+
+. More metadata from the website itself
+. for the testing dataset there is much more information available
+. github repo doesn't offer more metadata then the website itself
+. in general more metadata everwhere would help
+. BUT: the data itself is pretty self explainatory even as a non-medical person
+
+=== Preserve
+
+. the data website is from the ECDC, so that is pretty reliable with backups on github, so there is no single point of failure
+. they could however upload the data to research repository like zenodo
+. there is no indicator that they published a paper with the datasets provided, but they could explicit tell if they "only" preserved or also published the data
+. on the website itself there are no quality features 
+. DOI or other PID are not found on the website or the repository
+. authors are not named on the website at all, only the members of the repository given informations about that
+. metadata is present but to lesser extend on informations about preservation/publishing etc.
+. download options are fully supported
+. basic description and documentation is there, but it's by no means comprehensive
+. the data is freely accessable for everyone
+. there is no explicit licence in the repository but in the website is a link to the ECDC Copyright policy
+.. ECDC has to be acknowledged as original author
+.. The https://www.ecdc.europa.eu/en/copyright[copyright] policy of ECDC is compatible with CC BY 4.0 license
+. there is no overview of the data at all, not even the column names
+. archives are present for one time frame 20.06.2022 with additional script for R
+. the repository has 42 commits but the initial commits are on the 01.12.2023, so at the end of the record time frame
+. data is indexed by google and can be found pretty consistent @ 10
+
+==== FAIR
+
+Most of the FAIR criterias are met by the ECDC datasets.
+The given informations are easy to find, even though there could be more. 
+Also the Website is indexed on Google and other search engines, so machines/humans can find the data pretty easy. 
+the structure of the data is very good and one can get started pretty fast (considering pre-exisiting knowledge in data science)
+The data is free accessible without any kind of paywall or required login, but the files could have better naming conventions internally.
+The data itself is pretty reusable but the repository lack some of the informations available on the website, including the licence.
+
+=== Discover
+
+. covid datasets are pretty common, also because of the recency of the topic itself
+. example i found https://ourworldindata.org/covid-vaccinations[covid-19 vaccines]
+.. uses also a 7-day-period, so can presumably work very well with the ECDC datasets
+. also our ReporHack data can be used (topic: impact of fake news on vaccination) but probably harder to integration without extensive preprocessing
+
+=== Integrate
+
+=== Analyse
+
+== Tools
+
+. Ubuntu Oracular Oriole (development branch)
+. Lenovo Yoga Slim 7 Pro 14ACH5 O
+. AMD Ryzen™ 7 5800H with Radeon™ Graphics × 16 CPU
+. 16,0 GiB RAM
+. Linux 6.8.0-35-generic Kernel
+. git
+. VS Code 1.88.1
+. Office 365 Web
+. Python 3.12.3
+. Python venv, pandas, ipykernel
