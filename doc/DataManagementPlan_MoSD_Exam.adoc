@@ -161,7 +161,7 @@ image::img/zenodo_covid_discovery.png[]
 .. merge/join the datasets together based on the date
 .. remove the for this task not needed columns
 .. remove NaN rows
-.. export the dataset for every country in the directory `./data/out/` (so we have even an additional thing to analyse besides the main research question)
+.. export the dataset for every country in the directory `./data/per_country/` (so we have even an additional thing to analyse besides the main research question)
 . this should be achieved with another jupyter notebook _data_processing.ipynb_
 . when doing this part, i worked together with an artifical intelligence assistent to help me write the code, what shortened the developing part drastically
 
@@ -169,7 +169,10 @@ image::img/zenodo_covid_discovery.png[]
 
 . now comes the analysis itself, which will be demonstrated on one country dataset
 .. but development should be so, that running the analysis for other countries should not take that much time.
-. all developing happends now in the _data_analysis.ipynb_ notebook
+. all developing happends now in the _data_analysis.ipynb_ notebook and with help of matplotlib
+. it can be seen, that with rising test cases, also the covid-19 14 day rate rises, so there is a connection between those two factors
+.. this shows, that it is beneficial to test, because many more positive cases will be revealed.
+.. this helps to fight the disease 
 
 == Tools
 
@@ -182,4 +185,4 @@ image::img/zenodo_covid_discovery.png[]
 . VS Code 1.88.1
 . Office 365 Web
 . Python 3.12.3
-. Python venv, pandas, ipykernel
+. Python venv, pandas 2.2.2, ipykernel 6.29.5, matplotlib 3.9.1
