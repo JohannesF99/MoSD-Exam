@@ -94,6 +94,8 @@ Johannes Franke <johannes.franke@uni-jena.de>
 . Consistency
 .. good consistency
 .. a minor flaw is that there are entries for countries but also for the EU as a whole. this could lead to some minor missunderstandings
+.. also some country codes don't match between the two datasets, e.g. Austria (AUT/AT)
+.. the column _year_week_ has different format, in one it has a leading "W" for the week-number
 
 In general there are a few multi source problems on the instance level (inconsistent data) but apart from that, there are no major flaws. maybe a single source problem at the schema level with the EU/Country mixup
 
@@ -140,10 +142,34 @@ The data itself is pretty reusable but the repository lack some of the informati
 . example i found https://ourworldindata.org/covid-vaccinations[covid-19 vaccines]
 .. uses also a 7-day-period, so can presumably work very well with the ECDC datasets
 . also our ReporHack data can be used (topic: impact of fake news on vaccination) but probably harder to integration without extensive preprocessing
+. when searching for covid-19 on zenodo, one gets https://zenodo.org/search?q=covid%2019&l=list&p=1&s=10&sort=bestmatch[this] overview (or see picture below)
+.. even though there are many articles found, when applying some filter criteria, zenodo only finds https://zenodo.org/search?q=covid%2019&f=access_status%3Aopen&f=resource_type%3Adataset&f=file_type%3Acsv&l=list&p=1&s=10&sort=bestmatch[1.297 results], many of wich are for very niche regions or countries
+.. i would've liked the filter for a region to search datasets in, but this seems currently not supported
+.. the dataset itself doesn't have any keywords or terms that may produce search results for similar data. 
+.. zenodo probably offers more than only one sorting options, but the standard is _bestmatch_ what makes me believe, that it uses some kind of BM25 retrieval system under the hood (but thats just speculation on my side)
+..  searching for _covid-19_ or _covid 19_ doesn't change the number of results so they probably remove special characters from the query terms
+.. stopwords seem to get indexed by zenodo and remain in there query, so they defenetly make a difference 
+.. there also is no stemming happening on the query terms (buy vs. buys)
+
+image::img/zenodo_covid_discovery.png[]
 
 === Integrate
 
-=== Analyse
+. in this step, the datasets are processed in a way that makes it easier to analyse them and to find a solution for the research question
+. because the goal is to see if there's a connection between cases/deaths and testing, the idea is to:
+.. remove the leading "W" in the testing dataset _year_week_ column, so the format for both is the same
+.. merge/join the datasets together based on the date
+.. remove the for this task not needed columns
+.. remove NaN rows
+.. export the dataset for every country in the directory `./data/out/` (so we have even an additional thing to analyse besides the main research question)
+. this should be achieved with another jupyter notebook _data_processing.ipynb_
+. when doing this part, i worked together with an artifical intelligence assistent to help me write the code, what shortened the developing part drastically
+
+=== Analysis
+
+. now comes the analysis itself, which will be demonstrated on one country dataset
+.. but development should be so, that running the analysis for other countries should not take that much time.
+. all developing happends now in the _data_analysis.ipynb_ notebook
 
 == Tools
 
