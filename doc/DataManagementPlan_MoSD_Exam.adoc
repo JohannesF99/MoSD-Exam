@@ -5,7 +5,9 @@ Johannes Franke <johannes.franke@uni-jena.de>
 :toc:
 :url-repo: https://github.com/JohannesF99/MoSD-Exam
 
-== general process
+== data lifecycle
+
+=== Plan
 
 . get an overview of all available material
 . analyse the task for the exam
@@ -30,6 +32,7 @@ Johannes Franke <johannes.franke@uni-jena.de>
 .. when downloading from the website, both files get saved as _data.csv_ so renaming is necessary
 
 . select and fill out one DMP template
+.. DMP can be found in `doc/ERC-Data-Management-Plan.pdf`
 .. i chose the https://view.officeapps.live.com/op/view.aspx?src=https:%2F%2Fwww.tuwien.at%2Ffileadmin%2FAssets%2Fforschung%2FZentrum_Forschungsdatenmanagement%2Fdata-management-plan-template_HE_2021.docx&wdOrigin=BROWSELINK[Horizon Europe] template found https://www.zedif.uni-jena.de/en/180/data-management-plan[here]
 .. reason: i felt that DMP are very elusive when not working with an example, so i chose one DMP that resembled those in the exercise and was not to large in size for the project
 
@@ -38,12 +41,6 @@ Johannes Franke <johannes.franke@uni-jena.de>
 ..  slides are also in the repository as _pptx_ and _pdf_
 
 . go through the whole data lifecycle and add informations to all slides based on the informations learned in the lecture and in the corresponding moodle tiles
-
-== data lifecycle
-
-=== Plan
-
-- mostly covered by the data management plan
 
 === Collect
 
@@ -135,6 +132,10 @@ Also the Website is indexed on Google and other search engines, so machines/huma
 the structure of the data is very good and one can get started pretty fast (considering pre-exisiting knowledge in data science)
 The data is free accessible without any kind of paywall or required login, but the files could have better naming conventions internally.
 The data itself is pretty reusable but the repository lack some of the informations available on the website, including the licence.
+
+To measure the FAIR principles, https://www.ccdc.cam.ac.uk/solutions/about-the-csd/fair-data-principles/[this] graphic was used, just because it offers a compact overview over all criterias.
+
+image::../doc/img/FAIR-Image.png[]
 
 === Discover
 
