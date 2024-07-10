@@ -5,7 +5,7 @@ Johannes Franke <johannes.franke@uni-jena.de>
 :toc:
 :url-repo: https://github.com/JohannesF99/MoSD-Exam
 
-== data lifecycle
+== Data Lifecycle
 
 === Plan
 
@@ -190,3 +190,11 @@ image::../data/graphs/Germany/deaths_rate_testing_over_time_Germany.png[]
 . Office 365 Web
 . Python 3.12.3
 . Python venv, pandas 2.2.2, ipykernel 6.29.5, matplotlib 3.9.1
+
+== Repository
+
+The repository is found here:
+
+image::../doc/img/qrcode_repo.png[]
+
+https://github.com/JohannesF99/MoSD-Exam
