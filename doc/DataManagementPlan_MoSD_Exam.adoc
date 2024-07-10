@@ -31,11 +31,11 @@ Johannes Franke <johannes.franke@uni-jena.de>
 
 . select and fill out one DMP template
 .. i chose the https://view.officeapps.live.com/op/view.aspx?src=https:%2F%2Fwww.tuwien.at%2Ffileadmin%2FAssets%2Fforschung%2FZentrum_Forschungsdatenmanagement%2Fdata-management-plan-template_HE_2021.docx&wdOrigin=BROWSELINK[Horizon Europe] template found https://www.zedif.uni-jena.de/en/180/data-management-plan[here]
-.. reason: i felt that DMP are very elusive when not working with a konkrete example, so i chose one DMP that resembled those in the exercise and was not to large in size for the project
+.. reason: i felt that DMP are very elusive when not working with an example, so i chose one DMP that resembled those in the exercise and was not to large in size for the project
 
 . add https://1drv.ms/p/c/f2ce6a35a4bcb8f8/Ef3r8rRFoS5Dqf2jEH2hNDEBzDQD1lS_tptfSfQJuwqiKA?e=rtUu87[slides] for the exam
-.. development of slides in microsoft office (not ideal)
-.. after finishing the slides they will also be added to the repository as _pptx_ and _pdf_
+.. development of slides in microsoft office (not ideal, but necessary because of the time constrains)
+..  slides are also in the repository as _pptx_ and _pdf_
 
 . go through the whole data lifecycle and add informations to all slides based on the informations learned in the lecture and in the corresponding moodle tiles
 
